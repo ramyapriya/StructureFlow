@@ -1,6 +1,8 @@
 function generate_structure_images(dataset_path, output_path)
-    addpath('code');
-    image_list = dirPlus(dataset_path, 'FileFilter', '\.(jpg|png|tif)$');
+    addpath('/Users/ramya/workspace/model_gen/Inpainting_Trials/StructureFlow/scripts/matlab/code');
+    #image_list = dirPlus(dataset_path, 'FileFilter', '\.(jpg|png|tif)$');
+    filepattern = fullfile(dataset_path, '*.jpg');
+    image_list = glob(filepattern);
     num_image = numel(image_list);
     for i=1:num_image
        image_name = image_list{i};

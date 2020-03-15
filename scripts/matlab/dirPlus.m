@@ -124,15 +124,9 @@ function output = dirPlus(rootPath, varargin)
 
   persistent parser
   if isempty(parser)
-    recursionLimit = get(0, 'RecursionLimit');
+    recursionLimit = 100;
     parser = inputParser();
-    parser.FunctionName = 'dirPlus';
-    if verLessThan('matlab', '8.2')  % MATLAB R2013b = 8.2
-      addPVPair = @addParamValue;
-    else
-      parser.PartialMatching = true;
-      addPVPair = @addParameter;
-    end
+    addPVPair = addParamValue(parser, 'FunctionName', dirPlus);
 
     % Add general parameters:
 
